@@ -1,7 +1,12 @@
-<h2>Recently Added</h2>
+<h2>Search Books</h2>
+<form action="/books" method="get">
+    <%- include('_form_fieldsToIndex.ejs') %>
 
+    
+    <button type="submit">Search</button>
+</form>
 <div>
-    <% books.forEach( book => { %>
+    <% books.forEach(book=> { %>
         <div style="background:yellow;">
             <%=book.title %>
             <br>
@@ -11,5 +16,3 @@
         </div>
         <% }) %>
 </div>
-
-

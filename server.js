@@ -10,10 +10,9 @@ const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const bodyParser = require('body-parser');
 
-//const { engine } = require('express/lib/application');
-
 const indexRouter = require('./routes/index');
-const employeeRouter = require('./routes/employees');
+const authorRouter = require('./routes/authors');
+const bookRouter = require('./routes/books');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -23,13 +22,14 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 app.use('/', indexRouter);
-app.use('/employees', employeeRouter);
+app.use('/authors', authorRouter);
+app.use('/books', bookRouter);
 
 mongoose.connection.on('error', error => {
     console.error('Dn Connection error : ' + error);
 });
 
-mongoose.connection.once('open', () =>{
+mongoose.connection.once('open', () => {
     console.log('Connected Mongoo DB!');
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 });
