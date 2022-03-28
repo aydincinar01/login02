@@ -1,0 +1,7 @@
+<h1>Edit Author</h1>
+<form action="/authors/<%=author.id %>?_method=PUT" method="POST">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="<%=author.name %>" autofocus>
+    <button type="submit">UPDATE</button>
+    <a href="/authors/<%=author.id %>">Cancel</a>
+</form>
